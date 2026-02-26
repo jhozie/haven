@@ -34,7 +34,7 @@ export default function ResidentDashboard() {
         reference: (new Date()).getTime().toString(),
         email: `${currentUser.name.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()}@havenprop.com`,
         amount: totalDue * 100, // Default to total due
-        publicKey: 'pk_test_f43a6058ed25f539f5c7e52f546601bfb81aa08f',
+        publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY as string,
     };
 
     const initializePayment = usePaystackPayment(paystackConfig);
