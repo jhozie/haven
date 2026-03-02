@@ -18,10 +18,24 @@ export default function QuickPayClient() {
     const [isSearching, setIsSearching] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
     const [foundUser, setFoundUser] = useState<any>(null);
+    const [quickFillIndex, setQuickFillIndex] = useState(0);
 
     // Payment State
     const [isProcessing, setIsProcessing] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
+
+    // Filter residents who have PINs and aren't admins
+    const residentUsers = users.filter(u => u.role === 'resident' && u.pin);
+
+    const handleQuickFill = () => {
+        setErrorMsg("");
+        if (residentUsers.length > 0) {
+            const selected = residentUsers[quickFillIndex % residentUsers.length];
+            setUnit(selected.unit);
+            setPin(selected.pin);
+            setQuickFillIndex(prev => prev + 1);
+        }
+    };
 
     const residentCharges = foundUser
         ? charges.filter(c => c.residentId === foundUser.id && c.status !== 'paid')
@@ -133,19 +147,26 @@ export default function QuickPayClient() {
                                     </div>
                                 )}
 
-                                <div className="space-y-2">
+                                <div className="flex justify-between items-center mb-1">
                                     <label className="text-sm font-medium text-slate-300">Your Unit Number</label>
-                                    <div className="relative">
-                                        <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
-                                        <input
-                                            type="text"
-                                            value={unit}
-                                            onChange={(e) => setUnit(e.target.value)}
-                                            placeholder="e.g. Block A, Flat 1"
-                                            className="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl focus:outline-none focus:border-amber-500/50 transition-colors"
-                                            required
-                                        />
-                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={handleQuickFill}
+                                        className="text-[10px] text-amber-500/50 hover:text-amber-500 transition-colors uppercase tracking-widest font-bold"
+                                    >
+                                        Auto-Fill Resident
+                                    </button>
+                                </div>
+                                <div className="relative">
+                                    <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                                    <input
+                                        type="text"
+                                        value={unit}
+                                        onChange={(e) => setUnit(e.target.value)}
+                                        placeholder="e.g. Block A, Flat 1"
+                                        className="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl focus:outline-none focus:border-amber-500/50 transition-colors"
+                                        required
+                                    />
                                 </div>
 
                                 <div className="space-y-2">
