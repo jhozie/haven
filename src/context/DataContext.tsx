@@ -72,7 +72,7 @@ interface DataContextType {
     payCharge: (chargeId: string) => void;
     addWorkOrder: (order: Omit<WorkOrder, 'id' | 'dateSubmitted' | 'status'>) => void;
     updateWorkOrderStatus: (orderId: string, status: WorkOrder['status']) => void;
-    addUser: (user: Omit<User, 'id' | 'avatar'>) => void;
+    addUser: (user: Omit<User, 'id' | 'avatar' | 'pin'>) => void;
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
@@ -151,7 +151,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
         setWorkOrders(prev => prev.map(w => w.id === orderId ? { ...w, status } : w));
     };
 
-    const addUser = (userData: Omit<User, 'id' | 'avatar'>) => {
+    const addUser = (userData: Omit<User, 'id' | 'avatar' | 'pin'>) => {
         const newUser: User = {
             ...userData,
             id: `u${Date.now()}`,

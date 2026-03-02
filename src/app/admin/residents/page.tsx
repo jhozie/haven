@@ -140,7 +140,7 @@ export default function AdminResidents() {
                                 <img src={selectedUser.avatar} alt={selectedUser.name} className="w-16 h-16 rounded-full border-2 border-slate-700" />
                                 <div>
                                     <h3 className="text-2xl font-bold text-white">{selectedUser.name}</h3>
-                                    <p className="text-slate-400">{selectedUser.unit} • ID: {selectedUser.id}</p>
+                                    <p className="text-slate-400">{selectedUser.unit} • ID: {selectedUser.id} • <span className="text-amber-500 font-mono font-bold">PIN: {selectedUser.pin}</span></p>
                                 </div>
                             </div>
 
@@ -170,8 +170,8 @@ export default function AdminResidents() {
                                             <div className="flex items-center gap-4">
                                                 <span className="font-semibold text-white">₦{charge.amount.toLocaleString()}</span>
                                                 <span className={`px-2 py-0.5 rounded text-xs ${charge.status === 'paid' ? 'bg-green-500/10 text-green-400' :
-                                                        charge.status === 'overdue' ? 'bg-red-500/10 text-red-400' :
-                                                            'bg-amber-500/10 text-amber-400'
+                                                    charge.status === 'overdue' ? 'bg-red-500/10 text-red-400' :
+                                                        'bg-amber-500/10 text-amber-400'
                                                     }`}>
                                                     {charge.status.toUpperCase()}
                                                 </span>
@@ -193,8 +193,8 @@ export default function AdminResidents() {
                                             <div className="flex justify-between items-start">
                                                 <span className="font-medium text-slate-200">{order.title}</span>
                                                 <span className={`px-2 py-0.5 rounded text-xs whitespace-nowrap ${order.status === 'pending' ? 'bg-orange-500/10 text-orange-400' :
-                                                        order.status === 'in-progress' ? 'bg-blue-500/10 text-blue-400' :
-                                                            'bg-green-500/10 text-green-400'
+                                                    order.status === 'in-progress' ? 'bg-blue-500/10 text-blue-400' :
+                                                        'bg-green-500/10 text-green-400'
                                                     }`}>
                                                     {order.status.toUpperCase()}
                                                 </span>
