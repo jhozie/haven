@@ -5,7 +5,7 @@ import { useData } from "@/context/DataContext";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
-import { LayoutDashboard, Receipt, Wrench, Users } from "lucide-react";
+import { LayoutDashboard, Receipt, Wrench, Users, BarChart3 } from "lucide-react";
 
 export default function AdminLayout({
     children,
@@ -33,6 +33,7 @@ export default function AdminLayout({
         { href: "/admin/residents", label: "Residents", icon: Users },
         { href: "/admin/charges", label: "Charges", icon: Receipt },
         { href: "/admin/work-orders", label: "Work Orders", icon: Wrench },
+        { href: "/admin/reports", label: "Reports", icon: BarChart3 },
     ];
 
     return (
