@@ -147,8 +147,8 @@ export default function ReportsPage() {
                                             initial={{ width: 0 }}
                                             animate={{ width: `${percentage}%` }}
                                             className={`h-full ${cat === 'plumbing' ? 'bg-blue-500' :
-                                                    cat === 'electrical' ? 'bg-amber-500' :
-                                                        cat === 'hvac' ? 'bg-orange-500' : 'bg-slate-500'
+                                                cat === 'electrical' ? 'bg-amber-500' :
+                                                    cat === 'hvac' ? 'bg-orange-500' : 'bg-slate-500'
                                                 }`}
                                         />
                                     </div>
@@ -193,6 +193,53 @@ export default function ReportsPage() {
                     </div>
                 </motion.div>
             </div>
+
+            {/* Monthly Trend Simulation */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="glass-card p-6"
+            >
+                <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-semibold text-lg">Monthly Revenue Trend</h3>
+                    <div className="flex gap-2">
+                        <span className="flex items-center text-[10px] text-slate-400 font-medium">
+                            <div className="w-2 h-2 rounded-full bg-amber-500 mr-1"></div> Expected
+                        </span>
+                        <span className="flex items-center text-[10px] text-slate-400 font-medium">
+                            <div className="w-2 h-2 rounded-full bg-green-500 mr-1"></div> Collected
+                        </span>
+                    </div>
+                </div>
+                <div className="h-48 flex items-end justify-between gap-2 px-2">
+                    {[
+                        { month: 'Oct', expected: 80, collected: 75 },
+                        { month: 'Nov', expected: 90, collected: 82 },
+                        { month: 'Dec', expected: 110, collected: 105 },
+                        { month: 'Jan', expected: 95, collected: 88 },
+                        { month: 'Feb', expected: 100, collected: 92 },
+                        { month: 'Mar', expected: 120, collected: 45 }, // Current month
+                    ].map((data, idx) => (
+                        <div key={data.month} className="flex-1 flex flex-col items-center gap-2 group">
+                            <div className="w-full flex justify-center items-end gap-1 h-32">
+                                <motion.div
+                                    initial={{ height: 0 }}
+                                    animate={{ height: `${data.expected}%` }}
+                                    transition={{ delay: idx * 0.05 }}
+                                    className="w-full max-w-[12px] bg-slate-800 rounded-t-sm relative group-hover:bg-slate-700 transition-colors"
+                                >
+                                    <motion.div
+                                        initial={{ height: 0 }}
+                                        animate={{ height: `${(data.collected / data.expected) * 100}%` }}
+                                        className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-green-600 to-green-400 rounded-t-sm"
+                                    />
+                                </motion.div>
+                            </div>
+                            <span className="text-[10px] font-medium text-slate-500">{data.month}</span>
+                        </div>
+                    ))}
+                </div>
+            </motion.div>
 
             {/* Financial Overview Table */}
             <motion.div
