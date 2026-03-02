@@ -37,17 +37,17 @@ export interface WorkOrder {
 const MOCK_USERS: User[] = [
     { id: 'u1', name: 'Yewande Balogun', role: 'admin', unit: 'Estate Office', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Yewande', pin: '0000' },
     { id: 'u2', name: 'Chinedu Eze', role: 'resident', unit: 'Block A, Flat 1', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Chinedu', pin: '1234' },
-    { id: 'u3', name: 'Amina Bello', role: 'resident', unit: 'Block C, Flat 4', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Amina', pin: '1234' },
-    { id: 'u4', name: 'Fatima Johnson', role: 'resident', unit: 'Block B, Flat 2', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Fatima', pin: '1234' },
-    { id: 'u5', name: 'Oluwaseun Adebayo', role: 'resident', unit: 'Block D, Flat 5', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Oluwaseun', pin: '1234' },
-    { id: 'u6', name: 'Ngozi Okorie', role: 'resident', unit: 'Block A, Flat 3', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Ngozi', pin: '1234' },
-    { id: 'u7', name: 'Emeka Nwosu', role: 'resident', unit: 'Block C, Flat 1', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Emeka', pin: '1234' },
+    { id: 'u3', name: 'Amina Bello', role: 'resident', unit: 'Block C, Flat 4', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Amina', pin: '4321' },
+    { id: 'u4', name: 'Fatima Johnson', role: 'resident', unit: 'Block B, Flat 2', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Fatima', pin: '8888' },
+    { id: 'u5', name: 'Oluwaseun Adebayo', role: 'resident', unit: 'Block D, Flat 5', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Oluwaseun', pin: '5566' },
+    { id: 'u6', name: 'Ngozi Okorie', role: 'resident', unit: 'Block A, Flat 3', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Ngozi', pin: '9999' },
+    { id: 'u7', name: 'Emeka Nwosu', role: 'resident', unit: 'Block C, Flat 1', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Emeka', pin: '1111' },
 ];
 
 const MOCK_CHARGES: Charge[] = [
     { id: 'c1', title: 'Monthly Maintenance Fee', amount: 85000, dueDate: '2026-03-01', status: 'pending', residentId: 'u2' },
     { id: 'c2', title: 'Common Area Assessment', amount: 25000, dueDate: '2026-02-15', status: 'overdue', residentId: 'u2' },
-    { id: 'c3', title: 'Monthly Maintenance Fee', amount: 60000, dueDate: '2026-03-01', status: 'paid', residentId: 'u3' },
+    { id: 'c3', title: 'Monthly Maintenance Fee', amount: 60000, dueDate: '2026-03-01', status: 'paid', residentId: 'u3' }, // Amina already paid
     { id: 'c4', title: 'Monthly Maintenance Fee', amount: 85000, dueDate: '2026-03-01', status: 'pending', residentId: 'u4' },
     { id: 'c5', title: 'Gym Access Renewal', amount: 15000, dueDate: '2026-02-28', status: 'pending', residentId: 'u5' },
     { id: 'c6', title: 'Waste Management Fine', amount: 5000, dueDate: '2026-02-10', status: 'overdue', residentId: 'u6' },
