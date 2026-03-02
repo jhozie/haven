@@ -226,7 +226,7 @@ export default function ReportsPage() {
                                     initial={{ height: 0 }}
                                     animate={{ height: `${data.expected}%` }}
                                     transition={{ delay: idx * 0.05 }}
-                                    className="w-full max-w-[12px] bg-slate-800 rounded-t-sm relative group-hover:bg-slate-700 transition-colors"
+                                    className="w-full max-w-[12px] bg-amber-500/10 rounded-t-sm relative group-hover:bg-amber-500/20 transition-colors"
                                 >
                                     <motion.div
                                         initial={{ height: 0 }}
