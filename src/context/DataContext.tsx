@@ -90,7 +90,18 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
         if (storedUser) setCurrentUser(JSON.parse(storedUser));
 
         const storedUsers = localStorage.getItem('havenprop_users');
-        if (storedUsers) setUsers(JSON.parse(storedUsers));
+        if (storedUsers) {
+            const parsedUsers: User[] = JSON.parse(storedUsers);
+            // Migration: Ensure all stored users have the new PIN field
+            const migratedUsers = parsedUsers.map(u => {
+                if (!u.pin) {
+                    const mock = MOCK_USERS.find(m => m.id === u.id);
+                    return { ...u, pin: mock?.pin || '1234' };
+                }
+                return u;
+            });
+            setUsers(migratedUsers);
+        }
 
         const storedCharges = localStorage.getItem('havenprop_charges');
         if (storedCharges) setCharges(JSON.parse(storedCharges));

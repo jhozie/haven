@@ -46,9 +46,12 @@ export default function QuickPayClient() {
 
         // Simulate search
         setTimeout(() => {
+            const searchUnit = unit.trim().toLowerCase();
+            const searchPin = pin.trim();
+
             const user = users.find(u =>
-                u.unit.toLowerCase() === unit.toLowerCase() &&
-                u.pin === pin
+                u.unit.trim().toLowerCase() === searchUnit &&
+                u.pin.trim() === searchPin
             );
 
             if (user) {
