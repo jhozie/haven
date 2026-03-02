@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { KeyRound, Shield, Building2, Mail, Lock, ArrowRight, XCircle } from 'lucide-react';
+import { KeyRound, Shield, Building2, Mail, Lock, ArrowRight, XCircle, CreditCard } from 'lucide-react';
 import { useData } from '@/context/DataContext';
 
 export default function LandingPage() {
@@ -184,6 +185,16 @@ export default function LandingPage() {
               )}
             </button>
           </form>
+
+          <div className="pt-4 border-t border-white/5">
+            <Link
+              href="/pay"
+              className="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl font-medium text-slate-300 transition-all flex items-center justify-center gap-2 group"
+            >
+              <CreditCard className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
+              Quick Pay (No Login)
+            </Link>
+          </div>
         </div>
 
         <div className="mt-8 text-sm text-slate-500">

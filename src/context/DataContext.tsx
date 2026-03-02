@@ -11,6 +11,7 @@ export interface User {
     role: Role;
     unit: string;
     avatar: string;
+    pin: string;
 }
 
 export interface Charge {
@@ -34,13 +35,13 @@ export interface WorkOrder {
 
 // Mock Data
 const MOCK_USERS: User[] = [
-    { id: 'u1', name: 'Yewande Balogun', role: 'admin', unit: 'Estate Office', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Yewande' },
-    { id: 'u2', name: 'Chinedu Eze', role: 'resident', unit: 'Block A, Flat 1', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Chinedu' },
-    { id: 'u3', name: 'Amina Bello', role: 'resident', unit: 'Block C, Flat 4', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Amina' },
-    { id: 'u4', name: 'Fatima Johnson', role: 'resident', unit: 'Block B, Flat 2', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Fatima' },
-    { id: 'u5', name: 'Oluwaseun Adebayo', role: 'resident', unit: 'Block D, Flat 5', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Oluwaseun' },
-    { id: 'u6', name: 'Ngozi Okorie', role: 'resident', unit: 'Block A, Flat 3', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Ngozi' },
-    { id: 'u7', name: 'Emeka Nwosu', role: 'resident', unit: 'Block C, Flat 1', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Emeka' },
+    { id: 'u1', name: 'Yewande Balogun', role: 'admin', unit: 'Estate Office', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Yewande', pin: '0000' },
+    { id: 'u2', name: 'Chinedu Eze', role: 'resident', unit: 'Block A, Flat 1', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Chinedu', pin: '1234' },
+    { id: 'u3', name: 'Amina Bello', role: 'resident', unit: 'Block C, Flat 4', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Amina', pin: '1234' },
+    { id: 'u4', name: 'Fatima Johnson', role: 'resident', unit: 'Block B, Flat 2', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Fatima', pin: '1234' },
+    { id: 'u5', name: 'Oluwaseun Adebayo', role: 'resident', unit: 'Block D, Flat 5', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Oluwaseun', pin: '1234' },
+    { id: 'u6', name: 'Ngozi Okorie', role: 'resident', unit: 'Block A, Flat 3', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Ngozi', pin: '1234' },
+    { id: 'u7', name: 'Emeka Nwosu', role: 'resident', unit: 'Block C, Flat 1', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Emeka', pin: '1234' },
 ];
 
 const MOCK_CHARGES: Charge[] = [
@@ -143,7 +144,8 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
         const newUser: User = {
             ...userData,
             id: `u${Date.now()}`,
-            avatar: `https://api.dicebear.com/7.x/notionists/svg?seed=${userData.name.replace(/\s+/g, '')}`
+            avatar: `https://api.dicebear.com/7.x/notionists/svg?seed=${userData.name.replace(/\s+/g, '')}`,
+            pin: Math.floor(1000 + Math.random() * 9000).toString() // Generate random 4 digit PIN
         };
         setUsers(prev => [...prev, newUser]);
     };
